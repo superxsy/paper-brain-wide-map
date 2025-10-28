@@ -80,6 +80,27 @@ max     3840.000000    383.000000   1829.000000  ...      0.000053  6.144543e+08
 ```
 For further data loading examples see `data_loading_examples.py`
 
+# Interactive Neuropixels probe trajectories
+The repository includes an interactive Plotly viewer that reconstructs the
+histology-aligned trajectories of every Neuropixels probe released with the
+Brainwide Map dataset.  The script downloads the trajectories directly from
+ONE, colours them by lab (configurable), and optionally overlays an Allen atlas
+brain surface for anatomical context.  The output is a fully interactive 3D
+scene that you can rotate, pan and zoom with the mouse.
+
+Run the command below after configuring your ONE credentials:
+
+```
+python -m brainwidemap.visualization.interactive_probe_trajectories \
+    --freeze 2023_12_bwm_release \
+    --output neuropixels_trajectories.html
+```
+
+The command opens the viewer and exports a self-contained HTML file that can be
+shared with collaborators.  Pass `--no-brain` if the Allen atlas volumes are
+not available locally (the script will fall back automatically if the download
+fails) and `--max-probes 20` to generate a lighter preview.
+
 # Reproducing a basic set of results
 The following notebook shows a simple example of how to reproduce basic parts of the analysis on a subset of the data.
 https://colab.research.google.com/drive/1V6Cgi8vsKz0I3BOkFuq6lULb9we82vYr
